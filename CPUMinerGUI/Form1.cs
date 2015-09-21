@@ -25,7 +25,7 @@ namespace CPUMinerGUI {
         private List<Miner> miners;
         private Miner curMiner;
         private string fullHashrate;
-
+        
         private bool waitingForLog = false;
         private Miner waitingMiner;
 
@@ -251,6 +251,8 @@ namespace CPUMinerGUI {
                     "[" + (miner.lowCpu ? "low" : miner.threads) + "] " +
                     (miner.pool.description != String.Empty ? miner.pool.description : miner.pool.address);
             }
+
+            if (fullHashrate == fullHashrateLabel.Text) return;
 
             fullHashrateLabel.Text = fullHashrate;
 

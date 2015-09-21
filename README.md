@@ -8,4 +8,4 @@ requires .net 4.0 or higher
 * No precise hashrate calculations
 * No refactoring and no optimisations =) sorry =)
 
-![screenshot](/screenshot.png)
+![screenshot](/Screenshot.png)

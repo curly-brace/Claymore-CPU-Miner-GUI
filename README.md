@@ -6,3 +6,5 @@
 * No fool-proof-protection. Any input accepted and may crach the app =)
 * No precise hashrate calculations
 * No refactoring and no optimisations =) sorry =)
+
+![screenshot](/screenshot.png)

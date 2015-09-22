@@ -57,6 +57,8 @@
             this.fullHashrateLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.hashChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.priorityDropdown = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hashChart)).BeginInit();
             this.SuspendLayout();
@@ -287,33 +289,33 @@
             // stopButton
             // 
             this.stopButton.Enabled = false;
-            this.stopButton.Location = new System.Drawing.Point(351, 139);
+            this.stopButton.Location = new System.Drawing.Point(398, 138);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(91, 23);
+            this.stopButton.Size = new System.Drawing.Size(44, 21);
             this.stopButton.TabIndex = 20;
-            this.stopButton.Text = "Stop instance";
+            this.stopButton.Text = "Kill";
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // showButton
             // 
             this.showButton.Enabled = false;
-            this.showButton.Location = new System.Drawing.Point(157, 139);
+            this.showButton.Location = new System.Drawing.Point(298, 138);
             this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(91, 23);
+            this.showButton.Size = new System.Drawing.Size(44, 21);
             this.showButton.TabIndex = 21;
-            this.showButton.Text = "Show window";
+            this.showButton.Text = "Show";
             this.showButton.UseVisualStyleBackColor = true;
             this.showButton.Click += new System.EventHandler(this.showButton_Click);
             // 
             // hideButton
             // 
             this.hideButton.Enabled = false;
-            this.hideButton.Location = new System.Drawing.Point(254, 139);
+            this.hideButton.Location = new System.Drawing.Point(348, 138);
             this.hideButton.Name = "hideButton";
-            this.hideButton.Size = new System.Drawing.Size(91, 23);
+            this.hideButton.Size = new System.Drawing.Size(44, 21);
             this.hideButton.TabIndex = 22;
-            this.hideButton.Text = "Hide window";
+            this.hideButton.Text = "Hide";
             this.hideButton.UseVisualStyleBackColor = true;
             this.hideButton.Click += new System.EventHandler(this.hideButton_Click);
             // 
@@ -386,11 +388,40 @@
             this.hashChart.TabIndex = 25;
             this.hashChart.Text = "chart1";
             // 
+            // priorityDropdown
+            // 
+            this.priorityDropdown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.priorityDropdown.Enabled = false;
+            this.priorityDropdown.FormattingEnabled = true;
+            this.priorityDropdown.Items.AddRange(new object[] {
+            "Realtime",
+            "High",
+            "Above Normal",
+            "Normal",
+            "Below Normal",
+            "Idle"});
+            this.priorityDropdown.Location = new System.Drawing.Point(199, 138);
+            this.priorityDropdown.Name = "priorityDropdown";
+            this.priorityDropdown.Size = new System.Drawing.Size(93, 21);
+            this.priorityDropdown.TabIndex = 26;
+            this.priorityDropdown.SelectedIndexChanged += new System.EventHandler(this.priorityDropdown_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(155, 142);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(38, 13);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "Priority";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 661);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.priorityDropdown);
             this.Controls.Add(this.hashChart);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.fullHashrateLabel);
@@ -457,6 +488,8 @@
         private System.Windows.Forms.RadioButton win32Check;
         private System.Windows.Forms.RadioButton win64Check;
         private System.Windows.Forms.DataVisualization.Charting.Chart hashChart;
+        private System.Windows.Forms.ComboBox priorityDropdown;
+        private System.Windows.Forms.Label label9;
     }
 }
 

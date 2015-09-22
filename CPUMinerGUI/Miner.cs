@@ -14,6 +14,7 @@ namespace CPUMinerGUI {
         public string hashrate;
         public string logFile;
         public Process proc;
+        public int priority;
 
         public Miner(int p, string t, bool l, PoolItem pi, Process pr, string log) {
             pid = p;
@@ -23,6 +24,7 @@ namespace CPUMinerGUI {
             proc = pr;
             logFile = log;
             hashrate = "0 h/s";
+            priority = 3;
         }
     }
 }

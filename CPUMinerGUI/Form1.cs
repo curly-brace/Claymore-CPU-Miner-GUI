@@ -1,5 +1,4 @@
-﻿using OpenSimWin;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -181,6 +180,7 @@ namespace CPUMinerGUI {
             Process p = new Process();
             p.StartInfo.FileName = win32Check.Checked ? "NsCpuCNMiner32.exe" : "NsCpuCNMiner64.exe";
             p.StartInfo.Arguments = command;
+            p.StartInfo.UseShellExecute = false;
 
             p.Start();
 
@@ -203,6 +203,10 @@ namespace CPUMinerGUI {
             showButton.Enabled = false;
             hideButton.Enabled = false;
             stopButton.Enabled = false;
+
+            priorityDropdown.Enabled = false;
+            priorityDropdown.SelectedIndex = -1;
+
             hashrateTimer.Enabled = miners.Count > 0;
         }
 
@@ -216,6 +220,9 @@ namespace CPUMinerGUI {
             string selItem = instancesList.SelectedItem as string;
             int pid = int.Parse(selItem.Split(']')[0].Substring(1));
             curMiner = miners.Find(x => x.pid == pid);
+
+            priorityDropdown.Enabled = true;
+            priorityDropdown.SelectedIndex = curMiner.priority;
         }
 
         private void showButton_Click(object sender, EventArgs e) {
@@ -285,6 +292,37 @@ namespace CPUMinerGUI {
             }
 
             return hashrate;
+        }
+
+        private void priorityDropdown_SelectedIndexChanged(object sender, EventArgs e) {
+            switch (priorityDropdown.SelectedIndex) {
+                case 0:
+                    curMiner.priority = 0;
+                    curMiner.proc.PriorityClass = ProcessPriorityClass.RealTime;
+                    break;
+                case 1:
+                    curMiner.priority = 1;
+                    curMiner.proc.PriorityClass = ProcessPriorityClass.High;
+                    break;
+                case 2:
+                    curMiner.priority = 2;
+                    curMiner.proc.PriorityClass = ProcessPriorityClass.AboveNormal;
+                    break;
+                case 3:
+                    curMiner.priority = 3;
+                    curMiner.proc.PriorityClass = ProcessPriorityClass.Normal;
+                    break;
+                case 4:
+                    curMiner.priority = 4;
+                    curMiner.proc.PriorityClass = ProcessPriorityClass.BelowNormal;
+                    break;
+                case 5:
+                    curMiner.priority = 5;
+                    curMiner.proc.PriorityClass = ProcessPriorityClass.Idle;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

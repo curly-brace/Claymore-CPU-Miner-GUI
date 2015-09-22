@@ -59,6 +59,8 @@
             this.hashChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.priorityDropdown = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.moveUpButton = new System.Windows.Forms.Button();
+            this.moveDownButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hashChart)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +70,7 @@
             this.poolsList.FormattingEnabled = true;
             this.poolsList.Location = new System.Drawing.Point(12, 528);
             this.poolsList.Name = "poolsList";
-            this.poolsList.Size = new System.Drawing.Size(610, 121);
+            this.poolsList.Size = new System.Drawing.Size(578, 121);
             this.poolsList.TabIndex = 0;
             this.poolsList.SelectedIndexChanged += new System.EventHandler(this.poolsList_SelectedIndexChanged);
             // 
@@ -415,11 +417,35 @@
             this.label9.TabIndex = 27;
             this.label9.Text = "Priority";
             // 
+            // moveUpButton
+            // 
+            this.moveUpButton.Font = new System.Drawing.Font("Consolas", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveUpButton.Location = new System.Drawing.Point(596, 528);
+            this.moveUpButton.Name = "moveUpButton";
+            this.moveUpButton.Size = new System.Drawing.Size(26, 60);
+            this.moveUpButton.TabIndex = 28;
+            this.moveUpButton.Text = "^";
+            this.moveUpButton.UseVisualStyleBackColor = true;
+            this.moveUpButton.Click += new System.EventHandler(this.moveUpButton_Click);
+            // 
+            // moveDownButton
+            // 
+            this.moveDownButton.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moveDownButton.Location = new System.Drawing.Point(596, 589);
+            this.moveDownButton.Name = "moveDownButton";
+            this.moveDownButton.Size = new System.Drawing.Size(26, 60);
+            this.moveDownButton.TabIndex = 29;
+            this.moveDownButton.Text = "v";
+            this.moveDownButton.UseVisualStyleBackColor = true;
+            this.moveDownButton.Click += new System.EventHandler(this.moveDownButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 661);
+            this.Controls.Add(this.moveDownButton);
+            this.Controls.Add(this.moveUpButton);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.priorityDropdown);
             this.Controls.Add(this.hashChart);
@@ -490,6 +516,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart hashChart;
         private System.Windows.Forms.ComboBox priorityDropdown;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button moveUpButton;
+        private System.Windows.Forms.Button moveDownButton;
     }
 }
 

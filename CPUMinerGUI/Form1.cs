@@ -106,7 +106,13 @@ namespace CPUMinerGUI {
             saveButton.Enabled = false;
             startButton.Enabled = false;
 
-            string[] items = File.ReadAllLines("pools.txt");
+            string[] items;
+            try {
+                items = File.ReadAllLines("pool_list.txt");
+            } catch (IOException) {
+                items = new string[0];
+            }
+            
 
             if (items.Length == 0) return;
 
@@ -128,7 +134,7 @@ namespace CPUMinerGUI {
                 items[i++] = item.ToString();
             }
 
-            File.WriteAllLines("pools.txt", items);
+            File.WriteAllLines("pool_list.txt", items);
         }
 
         private void poolsList_SelectedIndexChanged(object sender, EventArgs e) {
@@ -277,7 +283,13 @@ namespace CPUMinerGUI {
         }
 
         private string parseLogTail(string file) {
-            string[] log = System.IO.File.ReadLines(file).Reverse().ToArray();
+            string[] log;
+
+            try {
+                log = System.IO.File.ReadLines(file).Reverse().ToArray();
+            } catch (IOException) {
+                return "";
+            }
 
             string hashrate = "";
 
@@ -323,6 +335,36 @@ namespace CPUMinerGUI {
                 default:
                     break;
             }
+        }
+
+        private void moveUpButton_Click(object sender, EventArgs e) {
+            if (poolsList.SelectedIndex == -1 || poolsList.SelectedIndex == 0) return;
+
+            string tmp = poolsList.Items[poolsList.SelectedIndex - 1] as string;
+            poolsList.Items[poolsList.SelectedIndex - 1] = poolsList.Items[poolsList.SelectedIndex];
+            poolsList.Items[poolsList.SelectedIndex] = tmp;
+
+            PoolItem tmpItem = poolList[poolsList.SelectedIndex - 1] as PoolItem;
+            poolList[poolsList.SelectedIndex - 1] = poolList[poolsList.SelectedIndex];
+            poolList[poolsList.SelectedIndex] = tmpItem;
+            writeList();
+
+            poolsList.SelectedIndex--;
+        }
+
+        private void moveDownButton_Click(object sender, EventArgs e) {
+            if (poolsList.SelectedIndex == -1 || poolsList.SelectedIndex == poolsList.Items.Count - 1) return;
+
+            string tmp = poolsList.Items[poolsList.SelectedIndex + 1] as string;
+            poolsList.Items[poolsList.SelectedIndex + 1] = poolsList.Items[poolsList.SelectedIndex];
+            poolsList.Items[poolsList.SelectedIndex] = tmp;
+
+            PoolItem tmpItem = poolList[poolsList.SelectedIndex + 1] as PoolItem;
+            poolList[poolsList.SelectedIndex + 1] = poolList[poolsList.SelectedIndex];
+            poolList[poolsList.SelectedIndex] = tmpItem;
+            writeList();
+
+            poolsList.SelectedIndex++;
         }
     }
 }

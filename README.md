@@ -16,11 +16,9 @@
 * pool list
 * created empty if there is none
 * and it is rearrangable
-* that's all folks =)
-
-* App tries to delete previous log on startup, if they are locked, it fails =)
-* No fool-proof-protection. Any input accepted and may crach the app =)
-* No precise hashrate calculations
-* No refactoring and no optimisations =) sorry =)
+* app tries to delete previous log on startup, if they are locked, it fails =)
+* no fool-proof-protection. Any input accepted and may crach the app =)
+* no precise hashrate calculations
+* no refactoring and no optimisations =) sorry =)
 
 ![screenshot](/Screenshot.png)

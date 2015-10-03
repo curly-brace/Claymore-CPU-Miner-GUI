@@ -1,5 +1,5 @@
 #GUI for Claymore CPU Miner
-**Compiled binary available [here](https://github.com/stasuss/Claymore-CPU-Miner-GUI/releases) (including latest miner version)**
+_**Compiled binary available [here](https://github.com/stasuss/Claymore-CPU-Miner-GUI/releases) (including latest miner version)**_
 
 **don't forget to give this launcher admin rights in windows, so it can launch miner in privileged mode for fullspeed**
 

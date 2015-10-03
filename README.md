@@ -1,9 +1,9 @@
 #GUI for Claymore CPU Miner
-_**Compiled binary available [here](https://github.com/stasuss/Claymore-CPU-Miner-GUI/releases) (including latest miner version)**_
+##Compiled binary available [here](https://github.com/stasuss/Claymore-CPU-Miner-GUI/releases) (including latest miner version)
 
-**don't forget to give this launcher admin rights in windows, so it can launch miner in privileged mode for fullspeed**
+####don't forget to give this launcher admin rights in windows, so it can launch miner in privileged mode for fullspeed
 
-*requires .net 4.0 or higher*
+####requires .net 4.0 or higher
 
 
 **features:**

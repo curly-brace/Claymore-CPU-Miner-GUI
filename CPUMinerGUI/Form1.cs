@@ -78,6 +78,8 @@ namespace CPUMinerGUI {
         }
 
         void newLogFound(object s, FileSystemEventArgs e) {
+            if (waitingForLog == false) return;
+
             if (InvokeRequired) {
                 object[] args = { s, e };
                 Invoke(new FileSystemEventHandler(newLogFound), args);
@@ -283,19 +285,21 @@ namespace CPUMinerGUI {
         }
 
         private string parseLogTail(string file) {
-            string[] log;
-
-            try {
-                log = System.IO.File.ReadLines(file).Reverse().ToArray();
-            } catch (IOException) {
-                return "";
+            string[] lines;
+            using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+            using (var sr = new StreamReader(fs)) {
+                string wholeLog = sr.ReadToEnd();
+                char[] split = new char[2];
+                split[0] = '\r';
+                split[1] = '\n';
+                lines = wholeLog.Split(split);
             }
 
             string hashrate = "";
 
-            for (int i = 0; i < log.Length; i++) {
-                if (log[i].Contains("Speed: ")) {
-                    string[] line = log[i].Split('\t');
+            for (int i = lines.Length - 1; i > 0; i--) {
+                if (lines[i].Contains("Speed: ")) {
+                    string[] line = lines[i].Split('\t');
 
                     hashrate = line[2].Substring(7, line[2].IndexOf(',') - 7);
 
